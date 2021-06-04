@@ -1,7 +1,10 @@
+atari-py==0.2.6
+box2d-py==2.3.8
 cloudpickle==1.6.0
 filelock==3.0.12
 gym==0.18.3
 numpy==1.20.3
+opencv-python==4.5.1.48
 pfrl==0.2.1
 Pillow==8.2.0
 pyglet==1.5.15
