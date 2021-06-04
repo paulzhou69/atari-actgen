@@ -5,5 +5,11 @@ Action Generalization experiments on Atari
 ```bash
 python3 -m venv env
 source env/bin/activate
-pip install -r requirements.txt
+pip3 install --upgrade pip setuptools wheel
+pip3 install -r requirements.txt
+```
+
+## Running
+```bash
+python3 -m atagen.train [--options]
 ```
