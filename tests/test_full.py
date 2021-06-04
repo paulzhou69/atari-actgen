@@ -1,2 +1,4 @@
-def no_tests():
-	print("no tests yet ;((")
+from atagen.train import main as train
+
+def test_train():
+	train(test=True)
