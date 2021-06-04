@@ -155,7 +155,7 @@ class TrainTrial():
 			target_update_interval=self.args.target_update_interval,
 			clip_delta=self.args.clip_delta,
 			update_interval=self.args.update_interval,
-			batch_accumulator="sum",
+			batch_accumulator="mean",
 			phi=feature_extractor,
 		)
 		return agent
