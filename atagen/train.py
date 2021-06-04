@@ -27,7 +27,7 @@ class TrainTrial():
 		parser.add_argument("--tag", type=str, default="default_exp", 
 				help="tag for the specific experiment run, also used as the subdir for saving")
 		parser.add_argument("--seed", type=int, default=0, help="Random seed [0, 2 ** 31)")
-		parser.add_argument("--gpu", type=int, default=-1)
+		parser.add_argument("--gpu", type=int, default=0)
 		parser.add_argument("--load", type=str, default=None)
 		parser.add_argument("--final-exploration-frames", type=int, default=10 ** 6)
 		parser.add_argument("--final-epsilon", type=float, default=0.01)
@@ -81,6 +81,14 @@ class TrainTrial():
 		process_seeds = np.arange(self.args.num_envs) + self.args.seed * self.args.num_envs
 		assert process_seeds.max() < 2 ** 32
 		self.process_seeds = process_seeds
+
+		# gpu or cpu
+		if self.args.gpu == 0 and not torch.cuda.is_available():
+			self.args.gpu = -1
+			logging.info("training on device CPU")
+		else:
+			torch.backends.cudnn.benchmark = True
+			logging.info("training on device CUDA")
 
 		# output
 		# self.args.outdir = experiments.prepare_output_dir(self.args, os.path.join(self.args.results_dir, self.args.tag))
